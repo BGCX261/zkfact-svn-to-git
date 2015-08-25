@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- zk.xml
+	$Id: zk.xml,v 1.1.1.1 2006/08/03 12:34:22 henrichen Exp $
+	Purpose:
+		
+	Description:
+		
+	History:
+		Thu Sep 14 11:17:07     2006, Created by henrichen@potix.com
+
+Copyright (C) 2006 Potix Corporation. All Rights Reserved.
+-->
+
+<zk>
+	<listener>
+		<listener-class>org.zkoss.zkplus.acegi.AcegiSecurityContextListener</listener-class>
+	</listener>
+</zk>

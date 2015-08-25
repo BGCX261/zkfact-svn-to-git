@@ -1,0 +1,37 @@
+<window title="ZK Login" border="normal" width="500px" onOK="doOK(self)" xmlns:h="http://www.w3.org/1999/xhtml" >
+	<grid width="500px">
+	<columns>
+		<column label="username"/>
+		<column label="password"/>
+		<column label="type"/>
+	</columns>
+	<rows>
+		<row><label value="marissa"/><label value="koala"/><label value="supervisor"/></row>
+		<row><label value="dianne"/><label value="emu"/><label value="normal user"/></row>
+		<row><label value="scott"/><label value="wombat"/><label value="normal user"/></row>
+		<row><label value="peter"/><label value="opal"/><label value="user disabled"/></row>
+	</rows>
+	</grid>
+	<h:br/>
+  <div align="center"><label style="color:red" value="Login failed. Please try again." if="${!empty arg.login_error}"/></div>
+  <div align="center"><label style="color:red" value="Reason: ${sessionScope.ACEGI_SECURITY_LAST_EXCEPTION.message}" if="${!empty arg.login_error}"/></div>
+	<h:br/>
+	<grid>
+	<rows>
+		<row>Username: <textbox id="username"/></row>
+		<row>Password: <textbox id="password" type="password"/></row>
+		<row spans="2"><checkbox id="remember" label=" Remember me on this computer"/></row>
+		<row spans="2"><div align="center"><button width="76px" label="OK" onClick="doOK(spaceOwner)"/><space/><button width="76px" label="Cancel" onClick="spaceOwner.detach()"/></div></row>
+	</rows>
+	</grid>
+	<zscript>
+	void doOK(Window modalwin) {
+	Execution exec = Executions.getCurrent();
+	exec.setAttribute("j_loginurl", "/j_acegi_security_check");
+	exec.setAttribute("j_username", username.value);
+	exec.setAttribute("j_password", password.value);
+	exec.setAttribute("_acegi_security_remember_me", Boolean.valueOf(remember.checked));
+	modalwin.detach();
+	}
+	</zscript>
+</window>

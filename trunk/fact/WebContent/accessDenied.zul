@@ -1,0 +1,15 @@
+<?page title="Access Denied"?>
+<window xmlns:h="http://www.w3.org/1999/xhtml" 
+	xmlns:zk="http://www.zkoss.org/2005/zk"	onOK="doOK(self)" width="500px">
+	<zscript>
+		import org.acegisecurity.context.SecurityContextHolder;
+		import org.acegisecurity.Authentication;
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	</zscript>
+	<h:h1>Sorry, access is denied</h:h1>
+	<h:br/>
+	<vbox>
+		<label value="${requestScope.ACEGI_SECURITY_403_EXCEPTION}"/>
+		<label value="${auth}"/>
+	</vbox>
+</window>

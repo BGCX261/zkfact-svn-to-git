@@ -1,0 +1,13 @@
+<?page title="Home Page"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<window xmlns:h="http://www.w3.org/1999/xhtml" width="500px">
+<h:h1>Home Page</h:h1>
+Anyone can view this page.
+<h:br/>
+<h:br/>
+<vbox>
+	<button label="Secure Page" href="secure/index.zul" width="180px"/>
+	<button label="Extremely secure page" href="secure/extreme/index.zul" width="180px"/>
+	<button label="Extremely secure method" onClick="bankManager.wireMoney(self)" width="180px"/>
+</vbox>
+</window>

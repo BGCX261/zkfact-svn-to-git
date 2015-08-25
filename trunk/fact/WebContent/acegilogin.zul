@@ -1,0 +1,37 @@
+<?page title="Login Page"?>
+<window xmlns:h="http://www.w3.org/1999/xhtml" 
+	xmlns:zk="http://www.zkoss.org/2005/zk"	onOK="doOK(self)" width="500px">
+	<h:h1>Login</h:h1>
+	<grid width="500px">
+	<columns>
+		<column label="username"/>
+		<column label="password"/>
+		<column label="type"/>
+	</columns>
+	<rows>
+		<row><label value="marissa"/><label value="koala"/><label value="supervisor"/></row>
+		<row><label value="dianne"/><label value="emu"/><label value="normal user"/></row>
+		<row><label value="scott"/><label value="wombat"/><label value="normal user"/></row>
+		<row><label value="peter"/><label value="opal"/><label value="user disabled"/></row>
+	</rows>
+	</grid>
+	<h:br/>
+	<div align="center"><label style="color:red" value="Login failed. Please try again." if="${!empty param.login_error}"/></div>
+	<div align="center"><label style="color:red" value="Reason: ${sessionScope.ACEGI_SECURITY_LAST_EXCEPTION.message}" if="${!empty param.login_error}"/></div>
+	<h:br/>
+	<h:form id="loginForm" action="j_acegi_security_check" method="POST">
+		<grid width="500px">
+		<rows>
+		  <row>Username: <textbox name="j_username"/></row>
+		  <row>Password: <textbox name="j_password" type="password"/></row>
+		  <row spans="2"><checkbox name="_acegi_security_remember_me" label=" Remember me on this computer"/></row>
+		  <row spans="2"><div align="center"><h:input type="button" width="76px" value="Submit" zk:onClick="doOK(spaceOwner)"/></div></row>
+		</rows>
+		</grid>
+	</h:form>
+	<zscript>
+	void doOK(Window win) {
+		Clients.submitForm(loginForm);
+	}
+	</zscript>
+</window>

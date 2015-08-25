@@ -1,0 +1,15 @@
+<window title="Access Denied" border="normal" width="600px" onOK="doOK(self)" xmlns:h="http://www.w3.org/1999/xhtml" >
+	<zscript>
+		import org.acegisecurity.context.SecurityContextHolder;
+		import org.acegisecurity.Authentication;
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	</zscript>
+  <div align="center"><label value="${requestScope.ACEGI_SECURITY_403_EXCEPTION}"/></div>
+  <div align="center"><label value="${auth}"/></div>
+  <div align="center"><button label="OK" onClick="doOK(spaceOwner)"/></div>
+  <zscript>
+    void doOK(Window modalwin) {
+      modalwin.detach();
+    }
+  </zscript>
+</window>
